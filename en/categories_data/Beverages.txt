@@ -1,0 +1,8 @@
+Water
+wine
+tea
+vodka
+brandy
+beer
+coffee
+sherry
