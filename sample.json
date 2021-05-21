@@ -1,0 +1,73 @@
+{
+    "Pantry": [
+        {
+            "ingredient": "angel hair pasta",
+            "unit": "g",
+            "quantity": 30.0
+        },
+        {
+            "ingredient": "knorr® taste of morocco concentrated bouillon",
+            "unit": "ml",
+            "quantity": 30.0
+        }
+    ],
+    "Beverages": [
+        {
+            "ingredient": "water",
+            "unit": "l",
+            "quantity": 1.2
+        }
+    ],
+    "Fruits and Vegetables": [
+        {
+            "ingredient": "chickpea",
+            "unit": "g",
+            "quantity": 540.0
+        },
+        {
+            "ingredient": "dried brown lentil",
+            "unit": "ml",
+            "quantity": 250.0
+        },
+        {
+            "ingredient": "fresh cilantro",
+            "unit": "g",
+            "quantity": 125.0
+        },
+        {
+            "ingredient": "olive oil",
+            "unit": "ml",
+            "quantity": 30.0
+        },
+        {
+            "ingredient": "onion",
+            "unit": "x",
+            "quantity": 1.0
+        },
+        {
+            "ingredient": "stalk celery",
+            "unit": "x",
+            "quantity": 1.0
+        }
+    ],
+    "Meat,Fish and Alternatives": [],
+    "Dairy and Eggs": [],
+    "Chilled": [
+        {
+            "ingredient": "diced tomato",
+            "unit": "ml",
+            "quantity": 398.0
+        }
+    ],
+    "Grains and Beans": [],
+    "Herbs and Spices": [],
+    "Nuts and Seeds": [],
+    "Bakery": [
+        {
+            "ingredient": "bun",
+            "unit": "g",
+            "quantity": 2.0
+        }
+    ],
+    "You may also need": []
+}

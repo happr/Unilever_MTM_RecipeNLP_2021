@@ -1,0 +1,165 @@
+{
+    "success": true,
+    "results": 636,
+    "page_start": 0,
+    "data": [
+   {
+            "ingredients": {
+                "ungrouped": {
+                    "position": 0,
+                    "list": [
+                        {
+                            "description": "2 Tbsp. (30 mL) olive oil",
+                            "quantity": 30,
+                            "multiple": 1,
+                            "unit": "ml",
+                            "position": 1,
+                            "product_id": null,
+                            "original_product_id": null,
+                            "related_data": {},
+                            "all_nutrition_complete": false,
+                            "core_nutrition_complete": true,
+                            "excluded_from_recipe_nutrition_calc": false
+                        },
+                        {
+                            "description": "1 large onion, chopped",
+                            "quantity": 1,
+                            "multiple": 1,
+                            "unit": null,
+                            "position": 2,
+                            "product_id": null,
+                            "original_product_id": null,
+                            "related_data": {},
+                            "all_nutrition_complete": false,
+                            "core_nutrition_complete": true,
+                            "excluded_from_recipe_nutrition_calc": false
+                        },
+                        {
+                            "description": "1 stalk celery, chopped",
+                            "quantity": 1,
+                            "multiple": 1,
+                            "unit": null,
+                            "position": 3,
+                            "product_id": null,
+                            "original_product_id": null,
+                            "related_data": {},
+                            "all_nutrition_complete": false,
+                            "core_nutrition_complete": true,
+                            "excluded_from_recipe_nutrition_calc": false
+                        },
+                        {
+                            "description": "2 Tbsp. (30 mL) Knorr® Taste of Morocco Concentrated Bouillon",
+                            "quantity": 1,
+                            "multiple": 1,
+                            "unit": null,
+                            "position": 4,
+                            "product_id": null,
+                            "original_product_id": null,
+                            "related_data": {},
+                            "all_nutrition_complete": false,
+                            "core_nutrition_complete": false,
+                            "excluded_from_recipe_nutrition_calc": false
+                        },
+                        {
+                            "description": "200 large Buns, finely chopped",
+                            "quantity": 2,
+                            "multiple": 1,
+                            "unit": null,
+                            "position": 5,
+                            "product_id": null,
+                            "original_product_id": null,
+                            "related_data": {},
+                            "all_nutrition_complete": false,
+                            "core_nutrition_complete": true,
+                            "excluded_from_recipe_nutrition_calc": false
+                        },
+                        {
+                            "description": "(1.2 L)water",
+                            "quantity": 3,
+                            "multiple": 1,
+                            "unit": null,
+                            "position": 6,
+                            "product_id": null,
+                            "original_product_id": null,
+                            "related_data": {},
+                            "all_nutrition_complete": false,
+                            "core_nutrition_complete": false,
+                            "excluded_from_recipe_nutrition_calc": false
+                        },
+                        {
+                            "description": "1 can (540 mL) chickpeas, rinsed and drained",
+                            "quantity": 540,
+                            "multiple": 1,
+                            "unit": "ml",
+                            "position": 7,
+                            "product_id": null,
+                            "original_product_id": null,
+                            "related_data": {},
+                            "all_nutrition_complete": false,
+                            "core_nutrition_complete": true,
+                            "excluded_from_recipe_nutrition_calc": false
+                        },
+                        {
+                            "description": "1 can (398 mL) diced tomatoes",
+                            "quantity": 398,
+                            "multiple": 1,
+                            "unit": "ml",
+                            "position": 8,
+                            "product_id": null,
+                            "original_product_id": null,
+                            "related_data": {},
+                            "all_nutrition_complete": false,
+                            "core_nutrition_complete": true,
+                            "excluded_from_recipe_nutrition_calc": false
+                        },
+                        {
+                            "description": "1 cup (250 mL) dried brown lentils",
+                            "quantity": 250,
+                            "multiple": 1,
+                            "unit": "ml",
+                            "position": 9,
+                            "product_id": null,
+                            "original_product_id": null,
+                            "related_data": {},
+                            "all_nutrition_complete": false,
+                            "core_nutrition_complete": true,
+                            "excluded_from_recipe_nutrition_calc": false
+                        },
+                        {
+                            "description": "1/2 cup (125 mL) chopped fresh cilantro, divided",
+                            "quantity": 125,
+                            "multiple": 1,
+                            "unit": "ml",
+                            "position": 10,
+                            "product_id": null,
+                            "original_product_id": null,
+                            "related_data": {},
+                            "all_nutrition_complete": false,
+                            "core_nutrition_complete": true,
+                            "excluded_from_recipe_nutrition_calc": false
+                        },
+                        {
+                            "description": "1 oz. (30 g) angel hair pasta, broken into pieces (3/4 cup)",
+                            "quantity": 30,
+                            "multiple": 1,
+                            "unit": "g",
+                            "position": 11,
+                            "product_id": null,
+                            "original_product_id": null,
+                            "related_data": {},
+                            "all_nutrition_complete": true,
+                            "core_nutrition_complete": true,
+                            "excluded_from_recipe_nutrition_calc": false
+                        }
+                    ]
+                }
+            },
+            "recipe_id": 228595,
+            "title": "Moroccan Harira",
+            "yield": {
+                "value_display": "6",
+                "measure": "servings",
+                "value": 6.0
+            }
+        }   ]
+}
