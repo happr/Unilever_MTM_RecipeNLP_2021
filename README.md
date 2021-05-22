@@ -11,7 +11,5 @@ nltk.download('wordnet')
 
 nltk.download('averaged_perceptron_tagger')
 
-For french you need extra resources and that you get by running this command in command line and then creating a zip of it and then uploading it
 
-python -m spacy download fr_core_news_sm
 
