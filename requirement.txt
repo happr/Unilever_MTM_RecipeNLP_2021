@@ -2,4 +2,3 @@ pandas
 re
 nltk
 json
-spacy
