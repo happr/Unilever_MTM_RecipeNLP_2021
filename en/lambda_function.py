@@ -16,10 +16,9 @@ def preprocess1(sent):
     sent = nltk.pos_tag(sent)
     return sent
 
-
 def process(input_json_data):
 
-    data = input_json_data
+    data = json.loads(input_json_data)
     df = None
     des,quantity,unit = [],[],[]
     
@@ -175,7 +174,6 @@ def process(input_json_data):
 
     return df
 
-
 def create_category_list():
   bakery = []
   with open("categories_data/Bakery.txt") as f:
@@ -263,9 +261,7 @@ def name_cat(name,bakery,chilled,beverages, dairy, fruit,grains,herbs,meat,nuts,
 
   return 10
 
-
 def read_units():
-    ml=[]
     with open("units_data/ml.txt") as f:
         ml =[wnl.lemmatize(re.sub("\n","",a).strip().lower()) for a in f.readlines()]
     
@@ -275,7 +271,6 @@ def read_units():
 
     return ml,gram
 
-
 def convert_unit(substring4,unit,ml,gram):
     for m in ml:
         if m in substring4 and len(m)>0 and unit !="l" and unit !="ml":
@@ -284,7 +279,6 @@ def convert_unit(substring4,unit,ml,gram):
         if g in substring4 and len(g)>0 and unit !="kg" and unit !="g":
             return "g"
     return unit
-
 
 def main_function(input_json):
     
@@ -376,6 +370,7 @@ def main_function(input_json):
     return final
 
     
+
 
 def convert(o):
     if isinstance(o, np.int64):
