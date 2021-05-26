@@ -1,19 +1,20 @@
-eau
-vin
-vodka
-brandy
-bière 
-café
-xérès
-lait
-balsamique
-huile
-ketchup
-salsa
-moutarde
-mayonnaise 
-compote aux pommes
-miel
-vinaigre
-hellmann's
-bouillon concentré
+Water
+Wine
+Vodka
+Brandy
+Beer 
+Coffee
+Sherry
+Milk
+Balsamic
+Oil
+Ketchup
+Salsa
+Mustard
+Mayonnaise 
+Apple Sauce
+Honey
+Vinegar
+Hellmann’s 
+Concentrated Bouillon
+
