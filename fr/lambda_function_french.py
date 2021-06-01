@@ -2,19 +2,18 @@ import pandas as pd
 import re
 from nltk.tokenize import word_tokenize
 import nltk
-from nltk.stem.snowball import FrenchStemmer
+from singularizer_french import singularize
 from re import compile as recompile
-stemmer = FrenchStemmer()
 
 
 def read_units():
     ml = []
     with open("units_data/ml.txt") as f:
-        ml =[stemmer.stem(re.sub("\n","",a).strip().lower()) for a in f.readlines() if len(a)>0]
+        ml =[singularize(re.sub("\n","",a).strip().lower()) for a in f.readlines() if len(a)>0]
     
     gram = []
     with open("units_data/gram.txt") as f:
-        gram = [stemmer.stem(re.sub("\n","",a).strip().lower()) for a in f.readlines() if len(a)>0]
+        gram = [singularize(re.sub("\n","",a).strip().lower()) for a in f.readlines() if len(a)>0]
 
     return ml,gram
 
@@ -52,7 +51,7 @@ def process(input_json_data,ml,gram):
     df = None
     des,quantity,unit = [],[],[]
     
-    unknow_words = ["nature","jeune","cuillères","cuillère","à","thé","cuillère à thé","en","dés","hachée","hachées","grossièrement","divisées","finement","facultatif","haché","tassées","boîte","de","soupe","conserve","bouillon","gousses","gousse","grosse","gross","gros","lanières","livre","onces","paquet","petit","petite","récipients","sachet","tasse","tasses","râpé","non cuit","cuit","cuits","tranche","tranches","moyenne","durs","pincer","refroidi","refroidie","grande","pot","emballée","poche","paquet","ordinaire","bandes","chaude","chaudes","plus","coupées","lanières","moitié","cuillères à thé","en","cubes","cube","dénoyauté","dénoyautés","mince","minces","tout petit","pelée","pelées","rôti","rôtis",]
+    unknow_words = ["nature","jeune","cuillères","cuillère","à","thé","cuillère à thé","en","dés","hachée","hachées","grossièrement","divisées","finement","facultatif","haché","tassées","boîte","de","soupe","conserve","bouillon","gousses","gousse","grosse","gross","gros","lanières","livre","onces","paquet","petit","petite","récipients","sachet","tasse","tasses","râpé","non cuit","cuit","cuits","tranche","tranches","tranch","moyenne","durs","pincer","refroidi","refroidie","grande","pot","emballée","poche","paquet","ordinaire","bandes","chaude","chaudes","plus","coupées","lanières","moitié","cuillères à thé","en","cubes","cube","dénoyauté","dénoyautés","mince","minces","tout petit","pelée","pelées","rôti","rôtis",]
     units = [" onces "," ml ", " l "," g "," kg "," kgs "," oz "," cm "," tasse de "]
     units_remove = ['%','/','.','-','_','-',']','*','-/', 'c.',"[,","]","onces","ml", "l","g","kg","kgs","oz","cm"]
 
@@ -141,7 +140,7 @@ def process(input_json_data,ml,gram):
             word_tokens = word_tokenize(substring4) 
             
             
-            
+            substring4 = singularize(substring4)
             filtered_sentence = [w for w in word_tokens if not w.strip() in unknow_words+units_remove] 
             substring4  = (" ").join(filtered_sentence)
 
@@ -167,57 +166,57 @@ def process(input_json_data,ml,gram):
 
             quantity_product,u = output_converter[0],output_converter[1]
 
-              
-            des.append(stemmer.stem(substring4))
+            des.append(substring4)
             quantity.append(quantity_product)
             unit.append(u)
             df =pd.DataFrame(zip(des,quantity,unit),columns=["food","quantity","unit"])
 
     return df
 
+
 def create_category_list():
   bakery = []
   with open("categories_data/Boulangerie.txt") as f:
-    bakery = [add_spaces(stemmer.stem(re.sub("\n","",a).strip())) for a in f.readlines() if len(a)>0]
+    bakery = [add_spaces(singularize(re.sub("\n","",a).strip())) for a in f.readlines() if len(a)>0]
 
   chilled = []
   with open("categories_data/Chilled_2.txt") as f:
-    chilled = [add_spaces(stemmer.stem(re.sub("\n","",a).strip())) for a in f.readlines() if len(a)>0]
+    chilled = [add_spaces(singularize(re.sub("\n","",a).strip())) for a in f.readlines() if len(a)>0]
 
   beverages = []
   with open("categories_data/Breuvages.txt") as f:
-    beverages = [add_spaces(stemmer.stem(re.sub("\n","",a).strip())) for a in f.readlines() if len(a)>0]
+    beverages = [add_spaces(singularize(re.sub("\n","",a).strip())) for a in f.readlines() if len(a)>0]
 
   dairy = []
   with open("categories_data/produits_laitiers_et_œufs.txt") as f:
-    dairy = [add_spaces(stemmer.stem(re.sub("\n","",a).strip())) for a in f.readlines() if len(a)>0]
+    dairy = [add_spaces(singularize(re.sub("\n","",a).strip())) for a in f.readlines() if len(a)>0]
 
   fruit = []
   with open("categories_data/fruits_et_légumes.txt") as f:
-    fruit = [add_spaces(stemmer.stem(re.sub("\n","",a).strip())) for a in f.readlines() if len(a)>0]
+    fruit = [add_spaces(singularize(re.sub("\n","",a).strip())) for a in f.readlines() if len(a)>0]
 
   grains = []
   with open("categories_data/céréales_et_haricots.txt") as f:
-    grains = [add_spaces(stemmer.stem(re.sub("\n","",a).strip())) for a in f.readlines() if len(a)>0]
+    grains = [add_spaces(singularize(re.sub("\n","",a).strip())) for a in f.readlines() if len(a)>0]
 
   herbs = []
   with open("categories_data/herbes_et_épices.txt") as f:
-    herbs = [add_spaces(stemmer.stem(re.sub("\n","",a).strip())) for a in f.readlines() if len(a)>0]
+    herbs = [add_spaces(singularize(re.sub("\n","",a).strip())) for a in f.readlines() if len(a)>0]
 
   meat = []
   with open("categories_data/viande_poisson_et_substituts.txt") as f:
-    meat = [add_spaces(stemmer.stem(re.sub("\n","",a).strip())) for a in f.readlines() if len(a)>0]
+    meat = [add_spaces(singularize(re.sub("\n","",a).strip())) for a in f.readlines() if len(a)>0]
     
   nuts = []
   with open("categories_data/noix_et_graines.txt") as f:
-    nuts = [add_spaces(stemmer.stem(re.sub("\n","",a).strip())) for a in f.readlines() if len(a)>0]
+    nuts = [add_spaces(singularize(re.sub("\n","",a).strip())) for a in f.readlines() if len(a)>0]
     
   pantry = []
   with open("categories_data/garde-manger.txt") as f:
-    pantry = [add_spaces(stemmer.stem(re.sub("\n","",a).strip())) for a in f.readlines() if len(a)>0]
+    pantry = [add_spaces(singularize(re.sub("\n","",a).strip())) for a in f.readlines() if len(a)>0]
 
   return bakery,chilled,beverages, dairy, fruit,grains,herbs,meat,nuts,pantry
-  
+    
 
 def name_cat(name,bakery,chilled,beverages, dairy, fruit,grains,herbs,meat,nuts,pantry):
   
