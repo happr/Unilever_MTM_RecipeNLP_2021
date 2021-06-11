@@ -45,13 +45,14 @@ def convert_unit(substring4,unit,quantity_product,ml,gram,m):
             
     return quantity_product,unit
     
+    
 def process(input_json_data,ml,gram):
 
     data = input_json_data
     df = None
     des,quantity,unit = [],[],[]
     
-    unknow_words = ["nature","jeune","cuillères","cuillère","à","thé","cuillère à thé","en","dés","hachée","hachées","grossièrement","divisées","finement","facultatif","haché","tassées","boîte","de","soupe","conserve","bouillon","gousses","gousse","grosse","gross","gros","lanières","livre","onces","paquet","petit","petite","récipients","sachet","tasse","tasses","râpé","non cuit","cuit","cuits","tranche","tranches","tranch","moyenne","durs","pincer","refroidi","refroidie","grande","pot","emballée","poche","paquet","ordinaire","bandes","chaude","chaudes","plus","coupées","lanières","moitié","cuillères à thé","en","cubes","cube","dénoyauté","dénoyautés","mince","minces","tout petit","pelée","pelées","rôti","rôtis",]
+    unknow_words = ["nature","jeune","cuillères","cuillère","à","thé","cuillère à thé","en","dés","hachée","hachées","grossièrement","divisées","finement","facultatif","haché","tassées","boîte","soupe","conserve","bouillon","gousses","gousse","grosse","gross","gros","lanières","livre","onces","paquet","petit","petite","récipients","sachet","tasse","tasses","râpé","non cuit","cuit","cuits","tranche","tranches","tranch","moyenne","durs","pincer","refroidi","refroidie","grande","pot","emballée","poche","paquet","ordinaire","bandes","chaude","chaudes","plus","coupées","lanières","moitié","cuillères à thé","en","cubes","cube","dénoyauté","dénoyautés","mince","minces","tout petit","pelée","pelées","rôti","rôtis",]
     units = [" onces "," ml ", " l "," g "," kg "," kgs "," oz "," cm "," tasse de "]
     units_remove = ['%','/','.','-','_','-',']','*','-/', 'c.',"[,","]","onces","ml", "l","g","kg","kgs","oz","cm"]
 
@@ -62,7 +63,7 @@ def process(input_json_data,ml,gram):
 
             rgx = recompile(r'(?<=\d)[,](?=\d)')
             m = rgx.sub(".",m)
-            m =re.sub("d'","de ",m)
+#             m =re.sub("d'","de ",m)
             word_tokens = word_tokenize(m) 
             m  = (" ").join(word_tokens)
             m = re.sub("\. "," ",m)
@@ -165,13 +166,15 @@ def process(input_json_data,ml,gram):
             output_converter = convert_unit(substring4,u,quantity_product,ml,gram,m)
 
             quantity_product,u = output_converter[0],output_converter[1]
-
+            substring4 = re.sub("de ","",substring4)
+            substring4 = re.sub("^[\s]*d'","",substring4)
             des.append(substring4)
             quantity.append(quantity_product)
             unit.append(u)
             df =pd.DataFrame(zip(des,quantity,unit),columns=["food","quantity","unit"])
 
     return df
+
 
 
 def create_category_list():
@@ -289,10 +292,10 @@ def main_function(input_json):
         try:
             if name[1] == "l" and group["quantity"].sum()<1:
                 new["unit"]="ml"
-                new["quantity"]=float(group["quantity"].sum()*1000)
+                new["quantity"]=round(float(group["quantity"].sum()*1000),2)
             elif name[1] =="kg" and group["quantity"].sum()<1:
                 new["unit"]="g"
-                new["quantity"]=float(group["quantity"].sum()*1000)
+                new["quantity"]=round(float(group["quantity"].sum()*1000),2)
             else:
                 new["unit"]=name[1]
                 if round(group["quantity"].sum(),2) == int(group["quantity"].sum())+0.99:
@@ -319,7 +322,7 @@ def main_function(input_json):
                 if out[0] == out[1]:
                     quantity = out[0]
             
-            new["quantity"] = quantity
+            new["quantity"] = round(quantity,2)
         cat = name_cat(add_spaces(name[0]),bakery,chilled,beverages, dairy, fruit,grains,herbs,meat,nuts,pantry) 
         if cat == 0:
             json_bakery.append(new)
