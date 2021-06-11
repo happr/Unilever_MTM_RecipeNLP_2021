@@ -342,14 +342,14 @@ def main_function(input_json):
     json_others = []
     for name,group in df1:
         new = {}
-        new["ingredient"]=name[0]
+        new["ingredient"]=name[0].strip()
         try:
             if name[1] == "l" and group["quantity"].sum()<1:
                 new["unit"]="ml"
-                new["quantity"]=float(group["quantity"].sum()*1000)
+                new["quantity"]=round(float(group["quantity"].sum()*1000),2)
             elif name[1] =="kg" and group["quantity"].sum()<1:
                 new["unit"]="g"
-                new["quantity"]=float(group["quantity"].sum()*1000)
+                new["quantity"]=round(float(group["quantity"].sum()*1000),2)
             else:
                 new["unit"]=name[1]
                 if round(group["quantity"].sum(),2) == int(group["quantity"].sum())+0.99:
@@ -404,11 +404,12 @@ def main_function(input_json):
 
 
     final = {"Pantry":json_pantry,"Beverages":json_beverages,"Fruits and Vegetables":json_fruit,
-             "Meat,Fish and Alternatives":json_meat,"Dairy and Eggs":json_dairy,
+             "Meat, Fish and Alternatives":json_meat,"Dairy and Eggs":json_dairy,
              "Chilled":json_chilled,"Grains and Beans":json_grains,"Herbs and Spices":json_herbs,
              "Nuts and Seeds":json_nuts,"Bakery":json_bakery,"You may also need":json_others}
     return final
 
+    
     
 
     
