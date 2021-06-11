@@ -52,7 +52,7 @@ def process(input_json_data,ml,gram):
     df = None
     des,quantity,unit = [],[],[]
     
-    unknow_words = ["nature","jeune","cuillères","cuillère","à","thé","cuillère à thé","en","dés","hachée","hachées","grossièrement","divisées","finement","facultatif","haché","tassées","boîte","soupe","conserve","bouillon","gousses","gousse","grosse","gross","gros","lanières","livre","onces","paquet","petit","petite","récipients","sachet","tasse","tasses","râpé","non cuit","cuit","cuits","tranche","tranches","tranch","moyenne","durs","pincer","refroidi","refroidie","grande","pot","emballée","poche","paquet","ordinaire","bandes","chaude","chaudes","plus","coupées","lanières","moitié","cuillères à thé","en","cubes","cube","dénoyauté","dénoyautés","mince","minces","tout petit","pelée","pelées","rôti","rôtis",]
+    unknow_words = ["nature","jeune","cuillères","cuillère","à","thé","c","en","dés","hachée","hachées","grossièrement","cuillère","divisées","finement","facultatif","haché","tassées","boîte","soupe","conserve","bouillon","gousses","gousse","grosse","gross","gros","lanières","livre","onces","paquet","petit","petite","récipients","sachet","tasse","tasses","râpé","non cuit","cuit","cuits","tranche","tranches","tranch","moyenne","durs","pincer","refroidi","refroidie","grande","pot","emballée","poche","paquet","ordinaire","bandes","chaude","chaudes","plus","coupées","lanières","moitié","cuillères à thé","en","cubes","cube","dénoyauté","dénoyautés","mince","minces","tout petit","pelée","pelées","rôti","rôtis",]
     units = [" onces "," ml ", " l "," g "," kg "," kgs "," oz "," cm "," tasse de "]
     units_remove = ['%','/','.','-','_','-',']','*','-/', 'c.',"[,","]","onces","ml", "l","g","kg","kgs","oz","cm"]
 
@@ -168,13 +168,15 @@ def process(input_json_data,ml,gram):
             quantity_product,u = output_converter[0],output_converter[1]
             substring4 = re.sub("de ","",substring4)
             substring4 = re.sub("^[\s]*d'","",substring4)
+            if "c farine tout usage" == substring4:
+                print(substring4)
+                print(m)
             des.append(substring4)
             quantity.append(quantity_product)
             unit.append(u)
             df =pd.DataFrame(zip(des,quantity,unit),columns=["food","quantity","unit"])
 
     return df
-
 
 
 def create_category_list():
@@ -288,7 +290,7 @@ def main_function(input_json):
     json_others = []
     for name,group in df1:
         new = {}
-        new["ingredient"]=name[0]
+        new["ingredient"]=name[0].strip()
         try:
             if name[1] == "l" and group["quantity"].sum()<1:
                 new["unit"]="ml"
@@ -322,7 +324,7 @@ def main_function(input_json):
                 if out[0] == out[1]:
                     quantity = out[0]
             
-            new["quantity"] = round(quantity,2)
+            new["quantity"] = quantity
         cat = name_cat(add_spaces(name[0]),bakery,chilled,beverages, dairy, fruit,grains,herbs,meat,nuts,pantry) 
         if cat == 0:
             json_bakery.append(new)
