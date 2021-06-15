@@ -141,8 +141,7 @@ def process(input_json_data,ml,gram):
             word_tokens = word_tokenize(substring4) 
             
             
-            substring4 = singularize(substring4)
-            filtered_sentence = [w for w in word_tokens if not w.strip() in unknow_words+units_remove] 
+            filtered_sentence = [singularize(w) for w in word_tokens if not w.strip() in unknow_words+units_remove] 
             substring4  = (" ").join(filtered_sentence)
 
             substring4 = substring4.strip(",")
